@@ -1,4 +1,6 @@
 import React, { Component } from 'react';   //destructing
+import {CardList} from './components/card-list/card-list.component';
+
 import './App.css';
 
 // class component
@@ -12,17 +14,23 @@ class App extends Component {
   }
 
   componentDidMount() {   // promise in ES6
-    fetch('https://jsonplaceholder.typicode.com/users')
-    .then(response => response.json())   //convert into json format
+    fetch('https://jsonplaceholder.typicode.com/users')   //asynch communication handling
+    .then(response => response.json())                    //convert into json format
     .then(users => this.setState({ monsters: users }));
   }
-  
+  /* name="Matthew" will be passed to props object
+     Anything is props.children which is existed between <CardList> Anything </CardList>
+  */
   render() {
     return (
       <div className="App">
+        <CardList name="Matthew">
         {this.state.monsters.map(monster => (
           <h1 key={monster.id}>{monster.name}</h1>
           ))}
+        </CardList>
+        
+        
       </div>
     );
   }
