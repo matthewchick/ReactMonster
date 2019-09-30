@@ -9,7 +9,8 @@ class App extends Component {
     super();
 
     this.state = {
-      monsters: []
+      monsters: [],
+      searchField: ''
     };
   }
 
@@ -20,15 +21,20 @@ class App extends Component {
   }
   /* name="Matthew" will be passed to props object
      Anything is props.children which is existed between <CardList> Anything </CardList>
+     this.setState is asynchronise event
   */
   render() {
     return (
       <div className="App">
+        <input type='search' 
+          placeholder='search monsters' 
+          onChange={e => {
+            this.setState({ searchField: e.target.value });
+            console.log(this.state);
+          }} 
+        />
         <CardList monsters={this.state.monsters}>
-        
         </CardList>
-        
-        
       </div>
     );
   }
