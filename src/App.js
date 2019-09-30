@@ -21,7 +21,7 @@ class App extends Component {
   }
   /* name="Matthew" will be passed to props object
      Anything is props.children which is existed between <CardList> Anything </CardList>
-     this.setState is asynchronise event
+     this.setState is asynchronise event - onchange event - React Synthetic event
   */
   render() {
     return (
@@ -29,8 +29,9 @@ class App extends Component {
         <input type='search' 
           placeholder='search monsters' 
           onChange={e => {
-            this.setState({ searchField: e.target.value });
-            console.log(this.state);
+            this.setState({ searchField: e.target.value }, () =>
+            console.log(this.state)
+            );
           }} 
         />
         <CardList monsters={this.state.monsters}>
