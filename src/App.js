@@ -19,11 +19,18 @@ class App extends Component {
     .then(response => response.json())                    //convert into json format
     .then(users => this.setState({ monsters: users }));
   }
+
   /* name="Matthew" will be passed to props object
      Anything is props.children which is existed between <CardList> Anything </CardList>
      this.setState is asynchronise event - onchange event - React Synthetic event
+     When this.setState is changed, it will call render()
   */
   render() {
+    const { monsters, searchField } = this.state;  // object restruct - monsters = this.state.monster
+    const filteredMonsters = monsters.filter(monster =>
+      monster.name.toLowerCase().includes(searchField.toLocaleLowerCase())
+      ) 
+
     return (
       <div className="App">
         <input type='search' 
@@ -34,7 +41,7 @@ class App extends Component {
             );
           }} 
         />
-        <CardList monsters={this.state.monsters}>
+        <CardList monsters={filteredMonsters} >
         </CardList>
       </div>
     );
