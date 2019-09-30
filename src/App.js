@@ -3,6 +3,7 @@ import { CardList } from './components/card-list/card-list.component';
 import { SearchBox } from './components/search-box/search-box.component';
 import './App.css';
 
+// deploy app  - https://dev.to/javascripterika/deploy-a-react-app-as-a-github-user-page-with-yarn-3fka
 // class component
 class App extends Component {
   constructor() {
